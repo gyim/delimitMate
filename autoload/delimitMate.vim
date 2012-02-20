@@ -405,10 +405,8 @@ function! delimitMate#ExpandReturn() "{{{
 	if delimitMate#WithinEmptyPair()
 		" Expand:
 		call delimitMate#FlushBuffer()
-		let char = delimitMate#GetCharFromCursor(0)
-		"return "\<Esc>a\<CR>x\<CR>\<Esc>k$\"_xa"
-		"return "\<Esc>a\<CR>\<UP>\<Esc>o"
-		call feedkeys("\<Esc>a\<Del>\<Esc>ox\<BS>\<CR>".char."\<Esc>kA", 't')
+		let line = getline('.')[col('.')-1:]
+		call feedkeys("\<Esc>l\"_Dox\<BS>\<CR>".line."\<Esc>kA", 't')
 		return ''
 	else
 		return "\<CR>"
