@@ -406,7 +406,7 @@ function! delimitMate#ExpandReturn() "{{{
 		" Expand:
 		call delimitMate#FlushBuffer()
 		let line = getline('.')[col('.')-1:]
-		call feedkeys("\<Esc>l\"_Dox\<BS>\<CR>".line."\<Esc>kA", 't')
+		call feedkeys("\<Esc>l\"_Do \<CR>".line."\<Esc>kA\<BS>", 't')
 		return ''
 	else
 		return "\<CR>"
